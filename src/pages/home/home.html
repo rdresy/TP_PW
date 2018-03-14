@@ -1,14 +1,30 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      appli du turfu
     </ion-title>
   </ion-navbar>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
+  <!-- The world is your oyster. -->
+  <!-- <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  </p> -->
+  
+      <!-- <li *ngFor = "let current of result">{{current.title}}</li>     -->
+  <ion-list>
+      <ion-item *ngFor = "let current of result">
+        <ion-thumbnail item-start>
+          <img src="http://via.placeholder.com/100x100">
+        </ion-thumbnail>
+        <h2>{{current.title}}</h2>
+        <p>{{current.author}} • {{current.date}}</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+  </ion-list>
+
+  
+
 </ion-content>
