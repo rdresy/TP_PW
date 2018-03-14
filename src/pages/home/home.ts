@@ -7,37 +7,43 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  result : Result[];
+  fakeResult : Result[];
 
   constructor(public navCtrl: NavController) {
-    this.result = fakeResult;
-    // this.initializeItems();
+    this.initializeResult();
   }  
 
-  searchQuery: string = '';
-  // items: string[];
+  initializeResult(){
+    this.fakeResult = [
+      {title : 'alo', author : 'auteur1', date :'1jan2018', image:'url1'},
+      {title : 'alia', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'batman', author : 'auteur3', date :'2jan2018', image:'url2'},
+      {title : 'ijed', author : 'auteur4', date :'2jan2018', image:'url2'},
+      {title : 'polai', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'lorem', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'sako', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'masa', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'},
+      {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'}
+    ] 
+  }
 
-  // initializeItems() {
-  // this.items = [
-  //   'Amsterdam',
-  //   'Bogota',
-  // ];
-  // }
-
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    // this.initializeItems();
-    this.result;
-
-    // set val to the value of the searchbar
+  getItems(ev){
+    this.initializeResult();
     let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.result = this.result.filter((result) => {
-        return (result.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.fakeResult = this.fakeResult.filter((item) => {
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+    else
+      return ('Aucun'+'résultat'+'trouvé').toLocaleLowerCase;
   }
 
 }
@@ -50,7 +56,3 @@ export interface Result {
 }
 
 
-const fakeResult: Result[] = [
-  {title : 'titre1', author : 'auteur', date :'1jan2018', image:'url1'},
-  {title : 'titre2', author : 'auteur2', date :'2jan2018', image:'url2'}
-]
