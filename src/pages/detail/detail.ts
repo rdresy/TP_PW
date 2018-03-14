@@ -21,4 +21,8 @@ export class DetailPage {
     console.log('ionViewDidLoad DetailPage');
   }
 
+  goBack(){
+    this.navCtrl.pop();
+  } 
+
 }

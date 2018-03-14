@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { DetailPage } from '../detail/detail';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -11,6 +13,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     this.initializeResult();
+    
   }  
 
   initializeResult(){
@@ -45,6 +48,11 @@ export class HomePage {
     else
       return ('Aucun'+'résultat'+'trouvé').toLocaleLowerCase;
   }
+
+  public gotoDetail(){
+    this.navCtrl.push(DetailPage);
+  }
+  
 
 }
 
