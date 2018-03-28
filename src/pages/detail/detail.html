@@ -14,13 +14,13 @@
 
 
 <ion-content padding>
-    <h1 text-center>Titre</h1>
+    <h1 text-center>{{film.title}}</h1>
     <ion-card>
         <ion-card-header>
           Poster
         </ion-card-header>
         <ion-card-content>
-            <img src="http://via.placeholder.com/400x400"/>
+            <img src={{film.image}}/>
         </ion-card-content>
       </ion-card>
       <ion-card>
@@ -28,7 +28,7 @@
             Date
           </ion-card-header>
           <ion-card-content>
-              Date qui va bien
+            {{film.date}}
           </ion-card-content>
         </ion-card>
         <ion-card>
@@ -36,7 +36,7 @@
               Auteur
             </ion-card-header>
             <ion-card-content>
-                Auteur qui va bien
+                {{film.author}}
             </ion-card-content>
           </ion-card>
 </ion-content>

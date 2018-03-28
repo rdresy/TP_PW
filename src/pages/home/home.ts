@@ -10,7 +10,7 @@ import { DetailPage } from '../detail/detail';
 export class HomePage {
 
   fakeResult : Result[];
-
+ 
   constructor(public navCtrl: NavController) {
     this.initializeResult();
     
@@ -46,12 +46,19 @@ export class HomePage {
       })
     }
     else
-      return ('Aucun'+'résultat'+'trouvé').toLocaleLowerCase;
+      return this.fakeResult = [];
   }
 
-  public gotoDetail(){
-    this.navCtrl.push(DetailPage);
+
+  gotoDetail(film: Result): void{
+    this.navCtrl.push(DetailPage, film);
   }
+
+  // public sendDetail(){
+  //   this.navCtrl.push(DetailPage, {
+  //     param1: 'John', param2: 'Johnson'
+  // });
+  // }
   
 
 }

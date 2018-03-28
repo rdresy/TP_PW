@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Result } from '../home/home';
 
 /**
  * Generated class for the DetailPage page.
@@ -14,15 +15,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
 
+  film : Result;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.film = this.navParams.data;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailPage');
-  }
 
-  goBack(){
-    this.navCtrl.pop();
-  } 
+
+
+ 
 
 }
