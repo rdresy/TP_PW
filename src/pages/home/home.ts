@@ -43,7 +43,7 @@ export class HomePage {
   }
 
   getItems(ev){
-    this.initializeResult();
+    // this.initializeResult();
     let val = ev.target.value;
     this.realResult = val ? this.fetchResult(val) : Observable.of([]);
   }
