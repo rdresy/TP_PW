@@ -20,7 +20,7 @@
           Poster
         </ion-card-header>
         <ion-card-content>
-            <img src={{film.image}}/>
+            <img src= '{{current.poster_path}}'>
         </ion-card-content>
       </ion-card>
       <ion-card>
@@ -28,7 +28,7 @@
             Date
           </ion-card-header>
           <ion-card-content>
-            {{film.date}}
+            {{film.release_date}}
           </ion-card-content>
         </ion-card>
         <ion-card>
@@ -36,7 +36,7 @@
               Auteur
             </ion-card-header>
             <ion-card-content>
-                {{film.author}}
+                {{film.overview}}
             </ion-card-content>
           </ion-card>
 </ion-content>

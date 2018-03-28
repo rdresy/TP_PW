@@ -19,10 +19,10 @@
       <ion-item *ngIf="fakeResult.length < 1">Aucun résultat </ion-item>
       <ion-item *ngFor = "let current of fakeResult">
         <ion-thumbnail item-start>
-          <img src="http://via.placeholder.com/100x100">
+          <img src='{{current.poster_path}}'>
         </ion-thumbnail>
         <h2>{{current.title}}</h2>
-        <p>{{current.author}} • {{current.date}}</p>
+        <p> {{current.release_date}}</p>
         <button ion-button clear item-end (click)="gotoDetail(current);">View</button>
       </ion-item>
   </ion-list>
