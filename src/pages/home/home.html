@@ -17,7 +17,7 @@
       
   <ion-list>
       <ion-item *ngIf="fakeResult.length < 1">Aucun résultat </ion-item>
-      <ion-item *ngFor = "let current of fakeResult">
+      <ion-item *ngFor = "let current of realResult">
         <ion-thumbnail item-start>
           <img src='{{current.poster_path}}'>
         </ion-thumbnail>

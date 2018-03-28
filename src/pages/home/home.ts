@@ -14,10 +14,11 @@ import { DetailPage } from '../detail/detail';
 export class HomePage {
 
   fakeResult : Result[];
+  realResult : Observable<Result[]>;
  
   constructor(public navCtrl: NavController, public httpClient : HttpClient) {
-    this.initializeResult();
-    
+    //this.initializeResult();
+   this.realResult = Observable.of([]); 
   }  
 
   initializeResult(){
@@ -44,13 +45,7 @@ export class HomePage {
   getItems(ev){
     this.initializeResult();
     let val = ev.target.value;
-    if (val && val.trim() != '') {
-      this.fakeResult = this.fakeResult.filter((item) => {
-        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-    else
-      return this.fakeResult = [];
+    this.realResult = val ? this.fetchResult(val) : Observable.of([]);
   }
 
 
@@ -59,8 +54,8 @@ export class HomePage {
   }
 
   
-  fetchResult(ev): Observable<Result[]>{
-    let val = ev.target.value;
+  fetchResult(val): Observable<Result[]>{
+    // let val = ev.target.value;
     const baseUrl = 'http://api.themoviedb.org/3/search/movie?'+'key='+tmdb_key+'&';
     return this.httpClient
     .get<Result[]>(baseUrl +'query=' + val).pluck('results');
