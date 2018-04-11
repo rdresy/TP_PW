@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { tmdb_key } from '../../app/tmdb';
 
 import { DetailPage } from '../detail/detail';
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
@@ -16,7 +18,7 @@ export class HomePage {
   fakeResult : Result[];
   realResult : Observable<Result[]>;
  
-  constructor(public navCtrl: NavController, public httpClient : HttpClient) {
+  constructor(public navCtrl: NavController, public httpClient : HttpClient, private alertCtrl: AlertController) {
     //this.initializeResult();
    this.realResult = Observable.of([]); 
   }  
@@ -60,6 +62,43 @@ export class HomePage {
     return this.httpClient
     .get<Result[]>(baseUrl +'query=' + val).pluck('results');
   } 
+
+  private discoverMovie(): Observable<Result[]> {   
+    const baseUrl = 'http://api.themoviedb.org/3/discover/movie?'+'api_key='+tmdb_key+'&primary_release_year=2018';
+    return this.httpClient
+    .get<Result[]>(baseUrl).pluck('results');
+  }
+
+  private showRandomMovieAlert(film :Result[]): void {
+    const movie : Result = film[Math.floor(Math.random())];
+    this.presentConfirm(movie);
+    
+  }
+
+  presentConfirm(film : Result) {
+    let alert = this.alertCtrl.create({
+      title: film.title,
+      message: film.overview,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.navCtrl.push(HomePage);
+          }
+        },
+        {
+          text: 'Details',
+          handler: () => {
+            console.log('Details clicked');
+            this.gotoDetail(film);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
 }
 
