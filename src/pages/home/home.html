@@ -19,7 +19,7 @@
       <ion-item *ngIf="!(realResult | async)?.length">Aucun résultat </ion-item>
       <ion-item *ngFor = "let current of realResult | async">
         <ion-thumbnail item-start>
-          <img src="'https://image.tmdb.org/t/p/w92/'+current.poster_path">
+          <img [src]="'https://image.tmdb.org/t/p/w154/'+current.poster_path">
         </ion-thumbnail>
         <h2>{{current.title}}</h2>
         <p> {{current.release_date}}</p>

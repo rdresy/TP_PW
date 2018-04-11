@@ -20,7 +20,7 @@
           Poster
         </ion-card-header>
         <ion-card-content>
-            <img src= '{{current.poster_path}}'>
+            <img [src]= "'https://image.tmdb.org/t/p/w500/'+film.poster_path">
         </ion-card-content>
       </ion-card>
       <ion-card>
@@ -33,7 +33,7 @@
         </ion-card>
         <ion-card>
             <ion-card-header>
-              Auteur
+              Overview
             </ion-card-header>
             <ion-card-content>
                 {{film.overview}}
